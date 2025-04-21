@@ -1,0 +1,19 @@
+{
+  "name": "rmt",
+  "version": "0.0.1",
+  "description": "A text based requirements, test and development management tool with CLI.",
+  "main": "index.js",
+  "scripts": {
+    "test": "\"test\": \"echo \\\"No tests yet\\\"\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TerziTech/reqtest-manage-text.git"
+  },
+  "author": "Joseph Terzi",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/TerziTech/reqtest-manage-text/issues"
+  },
+  "homepage": "https://github.com/TerziTech/reqtest-manage-text#readme"
+}
