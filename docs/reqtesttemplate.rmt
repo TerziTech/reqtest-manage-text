@@ -1,0 +1,5 @@
+.'. {reqtest_name}
+    reqtest_id: {reqtest_id} 
+// This is a test of the template
+//
+.'.
