@@ -1,9 +1,0 @@
-.'. {reqtest_name}
-    reqtest_id: {reqtest_id} 
-    hier: {hier}
-    description: {description}
-    reqs: 
-        - {reqs}
-    tests: 
-        - {tests}
-.'.
