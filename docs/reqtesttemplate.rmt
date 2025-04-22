@@ -1,8 +1,9 @@
 .'. {reqtest_name}
     reqtest_id: {reqtest_id} 
+    hier: {hier}
     description: {description}
-    owner: {owner}
-    status: {status}
-    detail: {detail}
-    test_criteria: {test_criteria}
+    reqs: 
+        - {reqs}
+    tests: 
+        - {tests}
 .'.

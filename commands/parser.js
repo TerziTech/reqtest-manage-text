@@ -1,11 +1,11 @@
-const fs = require('fs');
+import fs from 'fs';
 
 /**
  * Parses the content of a project.rmt file into structured reqtest objects.
  * @param {string} filePath - The path to the project.rmt file.
  * @returns {Array<Object>} - An array of parsed reqtest objects.
  */
-function parseRmtFile(filePath) {
+export function parseRmtFile(filePath) {
     const content = fs.readFileSync(filePath, 'utf-8');
     const reqtests = [];
 
@@ -35,5 +35,3 @@ function parseRmtFile(filePath) {
 
     return reqtests;
 }
-
-module.exports = { parseRmtFile };

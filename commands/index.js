@@ -1,14 +1,16 @@
 #!/usr/bin/env node
 
-const { Command } = require('commander');
+import { Command } from 'commander';
+import initCommand from './init.js';
+import addCommand from './add.js';
+import { parseRmtFile } from './parser.js';
+import fs from 'fs';
+import readline from 'readline';
+import { exec } from 'child_process';
+import editString from 'edit-string';
+import { treeReqtest } from './tree.js';
+
 const program = new Command();
-const initCommand = require('./init');
-const addCommand = require('./add');
-const { parseRmtFile } = require('./parser');
-const fs = require('fs');
-const readline = require('readline');
-const { exec } = require('child_process');
-const editString = require('edit-string');
 
 program
   .name('rmt')
@@ -183,19 +185,44 @@ async function editReqtest() {
     });
 }
 
-const listCommand = new Command('list')
+program
+  .command('list')
   .description('List all reqtest objects in the project.rmt file')
-  .action(() => {
-    const { listReqtests } = require('./index');
-    listReqtests();
-  });
+  .option('--verbose', 'Print the full details of each reqtest object')
+  .action((options) => {
+    const filePath = './project.rmt';
 
-program.addCommand(listCommand);
+    if (!fs.existsSync(filePath)) {
+        console.error('Error: project.rmt file not found. Please run "rmt init" to create one.');
+        return;
+    }
+
+    const reqtests = parseRmtFile(filePath);
+
+    if (reqtests.length === 0) {
+        console.log('No reqtest objects found in the project.rmt file.');
+        return;
+    }
+
+    if (options.verbose) {
+        console.log('List of reqtest objects with details:');
+        reqtests.forEach((reqtest, index) => {
+            console.log(`${index + 1}.`);
+            Object.entries(reqtest).forEach(([key, value]) => {
+                console.log(`   ${key}: ${value}`);
+            });
+        });
+    } else {
+        console.log('List of reqtest objects:');
+        reqtests.forEach((reqtest, index) => {
+            console.log(`${index + 1}. ${reqtest.name}`);
+        });
+    }
+  });
 
 const removeCommand = new Command('remove')
   .description('Remove a reqtest object from the project.rmt file with tab completion')
   .action(() => {
-    const { removeReqtest } = require('./index');
     removeReqtest();
   });
 
@@ -204,7 +231,6 @@ program.addCommand(removeCommand);
 const detailsCommand = new Command('details')
   .description('View details of a specific reqtest object in the project.rmt file')
   .action(() => {
-    const { detailsReqtest } = require('./index');
     detailsReqtest();
   });
 
@@ -213,15 +239,19 @@ program.addCommand(detailsCommand);
 const editCommand = new Command('edit')
   .description('Edit a specific reqtest object in the project.rmt file')
   .action(() => {
-    const { editReqtest } = require('./index');
     editReqtest();
   });
 
 program.addCommand(editCommand);
 
-module.exports = { listReqtests, removeReqtest, detailsReqtest, editReqtest };
+const treeCommand = new Command('tree')
+  .description('Display and manage the hierarchical structure of reqtest objects in the project.rmt file')
+  .action(() => {
+    treeReqtest();
+  });
 
-// Move the CLI entry point to the commands directory
-// This file will be moved to /commands/index.js
+program.addCommand(treeCommand);
 
 program.parse(process.argv);
+
+export { listReqtests, removeReqtest, detailsReqtest, editReqtest };

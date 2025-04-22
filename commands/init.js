@@ -1,6 +1,6 @@
-const { Command } = require('commander');
-const fs = require('fs');
-const path = require('path');
+import { Command } from 'commander';
+import fs from 'fs';
+import path from 'path';
 
 const initCommand = new Command('init')
   .description('Initialize a new project')
@@ -16,4 +16,4 @@ const initCommand = new Command('init')
     console.log('Project initialized! A new project.rmt file has been created.');
   });
 
-module.exports = initCommand;
+export default initCommand;
