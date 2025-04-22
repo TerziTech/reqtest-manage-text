@@ -4,11 +4,13 @@
   "description": "A text based requirements, test and development management tool with CLI.",
   "main": "commands/index.js",
   "bin": {
-    "rmt": "./commands/index.js"
+    "rmt": "./dist/commands/index.js"
   },
   "type": "module",
   "scripts": {
-    "test": "\"test\": \"echo \\\"No tests yet\\\"\""
+    "test": "\"test\": \"echo \\\"No tests yet\\\"\"",
+    "build": "babel commands --out-dir dist/commands",
+    "start": "node dist/commands/index.js"
   },
   "repository": {
     "type": "git",

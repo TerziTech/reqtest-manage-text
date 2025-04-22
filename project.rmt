@@ -2,6 +2,9 @@
 
 This is your project.rmt file.
 
+// Added a comment to indicate the JSON file will be used for manipulation
+// The .rmt file will still be generated from the JSON file.
+
 .'. init command
     reqtest_id: 20250421-212329-ZCG
     hier: 1.0
@@ -27,6 +30,16 @@ This is your project.rmt file.
             - `--help`: Display help information about the command.
 .'.
 
+.'. rehier command
+    reqtest_id: 20250422-134000-XBO 
+    hier: 4.0
+    description: The `rmt rehier` command recalculates the hierarchy of the reqtest objects in the project.rmt file. The command will read the project.rmt file and update the hierarchy of each reqtest object based on the current order and indentation level.
+    reqs: 
+        - {reqs}
+    tests: 
+        - {tests}
+.'.
+
 .'. add command
     reqtest_id: 20250421-213302-MRQ 
     hier: 3.0
@@ -40,42 +53,12 @@ This is your project.rmt file.
         - {tests}
 .'.
 
-.'. Your Reqtest Name
-    reqtest_id: 20250422-130215-RMA 
-    hier: {hier}
-    description: {description}
-    reqs: 
-        - {reqs}
-    tests: 
-        - {tests}
-.'.
 
-.'. New Item test
-    reqtest_id: 20250422-130341-HVT 
-    hier: {hier}
-    description: {description}
-    reqs: 
-        - {reqs}
-    tests: 
-        - {tests}
-.'.
 
-.'. New Item test 2
-    reqtest_id: 20250422-130524-ACG 
-    hier: {hier}
-    description: {description}
-    reqs: 
-        - {reqs}
-    tests: 
-        - {tests}
-.'.
-
-.'. New Item 5
-    reqtest_id: 20250422-130934-YDS 
-    hier: {hier}
-    description: {description}
-    reqs: 
-        - {reqs}
-    tests: 
-        - {tests}
-.'.
+    .'. hier caluclation
+        reqtest_id: 20250421-213302-MRQ
+        hier: 3.1
+        description: The `rmt hier` command calculates the hierarchy of the reqtest objects in the project.rmt file. The command will read the project.rmt file and print the hierarchy of each reqtest object to the terminal.
+        reqs:
+            - Determine the hier number based on the order of the reqtest objects in the project.rmt file and the indentation level of each reqtest object.
+    .'.
