@@ -2,8 +2,29 @@
 
 This is your project.rmt file.
 
-.'. test 6
-    reqtest_id: 20250421-190613-OMA 
-// This is a test of the template
-//
+.'. test 1
+    reqtest_id: 20250421-205837-APL 
+    description: {description}
+    owner: {owner}
+    status: {status}
+    detail: {detail}
+    test_criteria: {test_criteria}
+.'.
+
+.'. test 3
+    reqtest_id: 20250421-211116-469 
+    description: {description}
+    owner: {owner}
+    status: {status}
+    detail: {detail}
+    test_criteria: {test_criteria}
+.'.
+
+.'. test 4
+    reqtest_id: 20250421-211121-411 
+    description: {description}
+    owner: {owner}
+    status: {status}
+    detail: {detail}
+    test_criteria: {test_criteria}
 .'.

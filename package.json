@@ -21,6 +21,7 @@
   "homepage": "https://github.com/TerziTech/reqtest-manage-text#readme",
   "dependencies": {
     "commander": "^13.1.0",
+    "edit-string": "^1.1.6",
     "readline-sync": "^1.4.10"
   }
 }

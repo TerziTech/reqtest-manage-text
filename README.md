@@ -20,6 +20,28 @@ These two questions are the basis of the ReqTest definition. The requirements an
 - **Version Control:** The system supports version control for tracking major and minor changes to the project main file. 
 - **Design Documentation:** The system supports design documentation for the project. This will allow for easy tracking of the design and architecture of the project tied to the project main file.
 
+## rmt syntax
+
+Each reqtest object is defined in a text file with the following syntax:
+
+- Blocks are defined by `.'.`
+- The first line with the start block is the name of the block.
+- After the name of the block, each following field in the block is indented with a tab.
+- Each field is defined by a key and a value separated by a `: `.
+
+### Example reqtest block
+```plaintext
+
+.'. {reqtest_name}
+    reqtest_id: {reqtest_id} 
+    description: {description}
+    owner: {owner}
+    status: {status}
+    detail: {detail}
+    test_criteria: {test_criteria}
+.'.
+```
+
 ## Terminal Commands for ReqTest-Manage-Text - rmt
 
 ### rmt init
@@ -36,6 +58,39 @@ The `rmt add` command adds a new reqtest object to the project.rmt file from the
 ```bash
 rmt add
 ```
+
+### rmt list
+The `rmt list` command lists all the reqtest objects in the project.rmt file. The command will read the project.rmt file and print the name of each reqtest object to the terminal.
+
+```bash
+rmt list
+```
+
+### rmt remove
+
+The `rmt remove` command removes a reqtest object from the project.rmt file. The command will prompt the user for the name of the reqtest object to remove. The reqtest object will be removed from the project.rmt file.
+- The command will allow for tab completion of the reqtest object name. 
+- The command will also provide feedback if the reqtest object does not exist in the project.rmt file.
+
+
+```bash
+rmt remove
+```
+
+### rmt details
+
+The `rmt details` command provides detailed information about a specific reqtest object. It prompts the user for the name of the reqtest object and displays its associated details.
+- The command will allow for tab completion of the reqtest object name.
+- The command will also provide feedback if the reqtest object does not exist in the project.rmt file.
+- The command retrieves and displays all relevant fields associated with the reqtest object.
+- The command will also provide feedback if the reqtest object does not exist in the project.rmt file.
+
+```bash
+rmt details
+```
+
+### rmt edit
+The `rmt edit` command allows the user to edit a specific reqtest object in the project.rmt file. It prompts the user for the name of the reqtest object and opens it in a text editor for modification.
 
 ## License
 
